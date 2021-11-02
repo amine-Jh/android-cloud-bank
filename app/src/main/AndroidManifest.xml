@@ -10,10 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CloudBank">
         <activity
-            android:name=".ListBanks"
-            android:exported="false"
-            android:label="@string/title_activity_list_banks"
-            android:theme="@style/Theme.CloudBank.NoActionBar" />
+            android:name=".AcceuilActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
