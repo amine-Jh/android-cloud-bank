@@ -10,30 +10,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cloudbank.R;
-import com.example.cloudbank.adapter.Country;
+import com.example.cloudbank.model.Country;
+import com.example.cloudbank.model.Transaction;
 
 import java.util.List;
 
 public class CustomListAdapter  extends BaseAdapter {
 
     private List<Country> listData;
+    private List<Transaction> transactions;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public CustomListAdapter(Context aContext,  List<Country> listData) {
+    public CustomListAdapter(Context aContext,  List<Transaction> transactions) {
         this.context = aContext;
-        this.listData = listData;
+        this.transactions = transactions;
         layoutInflater = LayoutInflater.from(aContext);
     }
 
     @Override
     public int getCount() {
-        return listData.size();
+        return transactions.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return listData.get(position);
+        return transactions.get(position);
     }
 
     @Override
@@ -46,21 +48,26 @@ public class CustomListAdapter  extends BaseAdapter {
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.list_item, null);
             holder = new ViewHolder();
-            holder.flagView = (ImageView) convertView.findViewById(R.id.imageView2);
-            holder.countryNameView = (TextView) convertView.findViewById(R.id.TitleItem);
-            holder.populationView = (TextView) convertView.findViewById(R.id.paragItel);
+            holder.iconView = (ImageView) convertView.findViewById(R.id.imageItem);
+            holder.titleView = (TextView) convertView.findViewById(R.id.titleItem);
+            holder.costView = (TextView) convertView.findViewById(R.id.costItem);
+            holder.dateView=(TextView)convertView.findViewById(R.id.dateItem);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Country country = this.listData.get(position);
-        holder.countryNameView.setText(country.getCountryName());
-        holder.populationView.setText("Population: " + country.getPopulation());
 
-        int imageId = this.getMipmapResIdByName(country.getFlagName());
+        Transaction transaction=this.transactions.get(position);
+        holder.titleView.setText(transaction.getTitle());
+        holder.dateView.setText(transaction.getDate());
+        holder.costView.setText(transaction.getCost());
 
-        holder.flagView.setImageResource(imageId);
+
+
+        int imageId = this.getMipmapResIdByName(transaction.getImageName());
+
+        holder.iconView.setImageResource(imageId);
 
         return convertView;
     }
@@ -69,15 +76,18 @@ public class CustomListAdapter  extends BaseAdapter {
     public int getMipmapResIdByName(String resName)  {
         String pkgName = context.getPackageName();
         // Return 0 if not found.
+
         int resID = context.getResources().getIdentifier(resName , "mipmap", pkgName);
-        Log.i("CustomListView", "Res Name: "+ resName+"==> Res ID = "+ resID);
+        System.out.println(" this photo "+pkgName);
+        Log.i("CustomListView", "Res Name  : "+ resName+"==> Res ID = "+ resID);
         return resID;
     }
 
     static class ViewHolder {
-        ImageView flagView;
-        TextView countryNameView;
-        TextView populationView;
+        ImageView iconView;
+        TextView titleView;
+        TextView costView;
+        TextView dateView;
     }
 
 }

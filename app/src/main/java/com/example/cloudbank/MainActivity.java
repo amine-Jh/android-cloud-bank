@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         EditText username=(EditText)findViewById(R.id.userName);
         EditText password=(EditText)findViewById(R.id.passwordField);
         TextView textView=(TextView) findViewById(R.id.erreur);
-        if( username.getText().toString().equals("amine.jh" ) && password.getText().toString().equals("123456") ){
+        if( username.getText().toString().equals("123" ) && password.getText().toString().equals("123") ){
             System.out.println(password.getText().toString());
             Intent intent=new Intent(this,AcceuilActivity.class);
            startActivity(intent);
