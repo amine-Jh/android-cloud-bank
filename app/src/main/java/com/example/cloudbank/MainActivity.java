@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
         if( username.getText().toString().equals("123" ) && password.getText().toString().equals("123") ){
             System.out.println(password.getText().toString());
             Intent intent=new Intent(this,AcceuilActivity.class);
+            intent.putExtra("email",username.getText().toString());
+            intent.putExtra("password",password.getText().toString());
            startActivity(intent);
 
         }
         else{
-            textView.setText("false credentials");
+            Toast.makeText(MainActivity.this," false credentials ", Toast.LENGTH_LONG).show();
         }
 
         }

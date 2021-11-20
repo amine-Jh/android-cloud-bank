@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/item_back"
+    >
 
     <ImageView
         android:id="@+id/imageItem"
-        android:layout_width="159dp"
-        android:layout_height="139dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,33 +22,42 @@
         android:id="@+id/titleItem"
         android:layout_width="113dp"
         android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="36dp"
         android:text="TextView"
-        android:textSize="22dp"
-        app:layout_constraintEnd_toStartOf="@+id/costItem"
-        app:layout_constraintHorizontal_bias="0.463"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageItem"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.496" />
 
     <TextView
         android:id="@+id/costItem"
-        android:layout_width="109dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="20dp"
         android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/dateItem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toEndOf="@+id/imageItem"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/dateItem"
-        android:layout_width="110dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="87dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="32dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/titleItem"
-        app:layout_constraintTop_toBottomOf="@+id/costItem" />
+        android:textColor="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toEndOf="@+id/imageItem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

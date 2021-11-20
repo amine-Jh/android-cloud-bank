@@ -1,6 +1,7 @@
 package com.example.cloudbank.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.cloudbank.R;
 import com.example.cloudbank.model.Country;
 import com.example.cloudbank.model.Transaction;
@@ -77,9 +77,9 @@ public class CustomListAdapter  extends BaseAdapter {
         String pkgName = context.getPackageName();
         // Return 0 if not found.
 
-        int resID = context.getResources().getIdentifier(resName , "mipmap", pkgName);
+        int resID = context.getResources().getIdentifier(resName,"drawable",pkgName);
         System.out.println(" this photo "+pkgName);
-        Log.i("CustomListView", "Res Name  : "+ resName+"==> Res ID = "+ resID);
+
         return resID;
     }
 
