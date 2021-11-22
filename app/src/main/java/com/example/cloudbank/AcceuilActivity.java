@@ -1,7 +1,11 @@
 package com.example.cloudbank;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,7 +26,12 @@ public class AcceuilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceuil);
 
+       /* Bundle extras=getIntent().getExtras();
+        String email_text= new String(extras.getString("email"));
+        Log.i("email text",email_text);*/
+
         List<Transaction> image_details = getListData();
+
         final ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new CustomListAdapter(this, image_details));
 
@@ -32,27 +41,45 @@ public class AcceuilActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                 Object o = listView.getItemAtPosition(position);
-                Country country = (Country) o;
+                Transaction country = (Transaction) o;
+                Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
+                intent.putExtra("price",country.getCost());
+                intent.putExtra("date",country.getDate());
+                intent.putExtra("title",country.getTitle());
+                intent.putExtra("image",country.getImageName());
+                startActivity(intent);
                 Toast.makeText(AcceuilActivity.this, "Selected :" + " " + country, Toast.LENGTH_LONG).show();
             }
         });
 
+
     }
 
     private List<Transaction> getListData() {
-        List<Country> list = new ArrayList<>();
+
         List<Transaction> transactions = new ArrayList<>();
-        Transaction pay1 = new Transaction("usa","12/23/21","wifi paye","12");
-        Transaction pay2 = new Transaction("usa","12/23/21","logement","12");
-        Transaction pay3 = new Transaction("usa","12/23/21","alteres ","12");
-        Transaction pay4 = new Transaction("usa","12/23/21","alteres ","12");
+        Transaction pay1 = new Transaction("accept","12/23/21","wifi paye","240");
+        Transaction pay2 = new Transaction("laptop","12/23/21","logement","560");
+        Transaction pay3 = new Transaction("logement","12/23/21","Laptop ","5890");
+
         transactions.add(pay1);
         transactions.add(pay2);
         transactions.add(pay3);
-        transactions.add(pay4);
+        transactions.add(pay1);
+        transactions.add(pay2);
+        transactions.add(pay3);
+
 
         return transactions;
     }
+
+    public void  SkipAction(View v){
+
+        System.out.println("SKIP CLICKED");
+
+
+    }
+
 
 
 }

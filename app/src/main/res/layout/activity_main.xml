@@ -121,8 +121,7 @@
 
             android:layout_marginTop="40dp"
             android:letterSpacing="0.1"
-            android:background="@color/erreur"
-            android:textColor="@color/white"
+            android:textColor="@color/erreur"
             android:padding="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
